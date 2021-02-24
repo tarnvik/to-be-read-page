@@ -11,13 +11,18 @@
 
 <body>
     <main>
-        <h1>Books To Read</h1>
-        <div id="list-root"></div>
-        <form>
-            <label> Enter books name:
-            <input type="text">
-            </label>
+        <h1>Böcker jag ska läsa</h1>
+        <div id="list-root">
+
+        </div>
+        <form data-list-form>
+            <input type="text" data-list-input />
+            <button>+</button>
         </form>
+        <div>
+            <h2>Böcker jag har läst</h2>
+            <div id="book-list"></div>
+        </div>
     </main>
 </body>
 
