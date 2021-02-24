@@ -1,9 +1,9 @@
 "use strict"; 
 
-const LOCAL_STORAGE_KEY_TODOS = "todos";
+const LOCAL_STORAGE_KEY_TBRS = "tbrs";
 const LOCAL_STORAGE_KEY_READS = "reads";
 
-let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TODOS)) || [];
+let tbrs = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TBRS)) || [];
 let reads = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_READS)) || [];
 
 let listRoot = document.querySelector("#list-root");
@@ -16,78 +16,76 @@ listForm.addEventListener("submit", (e) => {
   if (listInput.value.trim() === "") {
     return;
   }
-  todos.push(createTodo(listInput.value.trim()));
+  tbrs.push(createListItem(listInput.value.trim()));
   updateList();
   listInput.value = "";
 });
 
-function createTodo(name) {
+function createListItem(name) {
   return {
     id: Date.now().toString(),
     name: name,
   };
 }
 
-
-function todoList(items) {
+function list(items) {
   let list = document.createElement("ul");
   items.forEach((item) => {
     let listItem = document.createElement("li");
-    let todoListItem
-    todoListItem.innerText = item.name;
-    todoListItem.setAttribute("data-id", item.id);
-    todoListItem.setAttribute("name", item.name);
-    todoListItem.addEventListener("click", moveItem);
+    listItem.innerText = item.name;
+    listItem.setAttribute("data-id", item.id);
+    listItem.setAttribute("name", item.name);
+    listItem.addEventListener("click", moveItem);
+    list.append(listItem);
+    /*
+    let todoListItem    
     let deleteBox = document.createElement("input");
     deleteBox.setAttribute("type", "checkbox")
     deleteBox.setAttribute("onclick", "removeItem")
     todoListItem.setAttribute("data-id", item.id);
-
     todoListItem.append(deleteBox);
-    list.append(todoListItem);
+     */
   });
   return list;
 }
-
-
 
 function deleteItem(event){
   let itemToRemove = event.target.getAttribute("data-id");
   console.log(itemToRemove);
   reads = reads.filter((item) => item.id !== itemToRemove);
-  todos = todos.filter((item) => item.id !== itemToRemove);
+  tbrs = tbrs.filter((item) => item.id !== itemToRemove);
 }
 
 function moveItem(event) {
-  let itemShouldBeRemoved = false;
+  let itemIsInReads = false;
   let itemToMove = event.target.getAttribute("data-id");
-  let readBook = event.target.getAttribute("name");
+  let itemToMoveName = event.target.getAttribute("name");  
   reads.forEach((item) => {
     if (item.id === itemToMove){
-      itemShouldBeRemoved = true;
+      itemIsInReads = true;
     }
   });
-  if (itemShouldBeRemoved) {
-    todos.push(createTodo(readBook));   
-    itemShouldBeRemoved = false;
+  if (itemIsInReads) {
+    tbrs.push(createListItem(itemToMoveName));
+    reads = reads.filter((item) => item.id !== itemToMove);
+    itemIsInReads = false;
   } else {
-    reads.push(createTodo(readBook));   
+    reads.push(createListItem(itemToMoveName)); 
+    tbrs = tbrs.filter((item) => item.id !== itemToMove);  
   }
-  reads = reads.filter((item) => item.id !== itemToMove);
-  todos = todos.filter((item) => item.id !== itemToMove);
   updateList();
 }
 
 function updateList() {
   saveList();
   listRoot.innerHTML = "";
-  listRoot.append(todoList(todos));
+  listRoot.append(list(tbrs));
   bookList.innerHTML = "";
-  bookList.append(todoList(reads));
+  bookList.append(list(reads));
 }
 
 function saveList() {
-  localStorage.setItem(LOCAL_STORAGE_KEY_TODOS, JSON.stringify(todos));
+  localStorage.setItem(LOCAL_STORAGE_KEY_TBRS, JSON.stringify(tbrs));
   localStorage.setItem(LOCAL_STORAGE_KEY_READS, JSON.stringify(reads));
 }
 
