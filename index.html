@@ -10,20 +10,41 @@
 </head>
 
 <body>
+    <header>
+        <h1>Track your reading</h1>
+    </header>
     <main>
-        <h1>Böcker jag ska läsa</h1>
-        <div id="list-root">
+        <div>
+            <section>
+                <h2>To Be Read</h2>
+                <div id="tbr-list"></div>
+            </section>
+            <section>
+                <h2>Böcker jag har läst</h2>
+                <div id="book-list"></div>
+            </section>
         </div>
         <form data-list-form>
-            <input type="text" data-list-input />
+            <label>
+                Enter book name:
+                <input type="text" data-list-input />
+            </label>
             <button>+</button>
         </form>
-        <button id="deleteButton">DELETE</button>
-        <div>
-            <h2>Böcker jag har läst</h2>
-            <div id="book-list"></div>
-        </div>
+        <img src="https://picsum.photos/200" alt="Random test image" id="deleteButton">
+        <article>
+            <h2>How to use</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, delectus repellat doloribus provident
+                labore earum, vero enim aspernatur nesciunt soluta aliquid rem beatae nemo impedit itaque! Eius fuga
+                optio recusandae natus dolor mollitia iste, saepe ad ipsa, ullam fugit. Voluptatibus architecto
+                provident obcaecati dolores autem natus at veritatis est magni. Lorem ipsum, dolor sit amet consectetur
+                adipisicing elit. Iure dolorum quis reiciendis et suscipit cumque a, praesentium error. Corporis neque
+                tenetur impedit hic, corrupti eveniet quia beatae quos nam sed atque praesentium modi nobis nostrum odio
+                numquam sapiente, harum officia perferendis ea sit mollitia rerum. Voluptatibus quibusdam recusandae
+                quidem dolorum.</p>
+        </article>
     </main>
+    <footer></footer>
 </body>
 
 </html>

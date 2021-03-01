@@ -1,4 +1,4 @@
-"use strict"; 
+"use strict";
 
 const LOCAL_STORAGE_KEY_TBRS = "tbrs";
 const LOCAL_STORAGE_KEY_READS = "reads";
@@ -6,11 +6,12 @@ const LOCAL_STORAGE_KEY_READS = "reads";
 let tbrs = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TBRS)) || [];
 let reads = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_READS)) || [];
 
-let listRoot = document.querySelector("#list-root");
+let listRoot = document.querySelector("#tbr-list");
+let bookList = document.querySelector("#book-list");
 let listForm = document.querySelector("[data-list-form]");
 let listInput = document.querySelector("[data-list-input]");
-let bookList = document.querySelector("#book-list");
 let deleteButton = document.querySelector("#deleteButton");
+let deleteMode = false;
 
 listForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -22,17 +23,14 @@ listForm.addEventListener("submit", (e) => {
   listInput.value = "";
 });
 
-let deleteMode = false;
-deleteButton.addEventListener("click", toggleDeleteMode);
-
-function toggleDeleteMode() {
-  if(deleteMode === false){
+deleteButton.addEventListener("click", () => {
+  if (!deleteMode) {
     deleteMode = true;
   } else {
     deleteMode = false;
   }
   console.log(deleteMode);
-}
+});
 
 function createListItem(name) {
   return {
@@ -51,32 +49,31 @@ function list(items) {
     listItem.setAttribute("data-id", item.id);
     listItem.setAttribute("name", item.name);
     listItem.addEventListener("click", moveItem);
-    list.append(listItem);;
+    list.append(listItem);
   });
   return list;
 }
 
 function moveItem(event) {
   let itemToMove = event.target.getAttribute("data-id");
-  if (!deleteMode){
-    let itemIsInReads = false;
-    let itemToMoveName = event.target.getAttribute("name");  
-    reads.forEach((item) => {
-      if (item.id === itemToMove){
-        itemIsInReads = true;
-      }
-    });
-    if (itemIsInReads) {
-      tbrs.push(createListItem(itemToMoveName));
-      reads = reads.filter((item) => item.id !== itemToMove);
-      itemIsInReads = false;
-    } else {
-        reads.push(createListItem(itemToMoveName)); 
-        tbrs = tbrs.filter((item) => item.id !== itemToMove);  
-      }
-  } else {
+  let itemToMoveName = event.target.getAttribute("name");
+  let itemIsInReads = false;
+  reads.forEach((item) => {
+    if (item.id === itemToMove) {
+      itemIsInReads = true;
+    }
+  });
+  if (!deleteMode && itemIsInReads) {
+    tbrs.push(createListItem(itemToMoveName));
     reads = reads.filter((item) => item.id !== itemToMove);
-    tbrs = tbrs.filter((item) => item.id !== itemToMove);  
+    itemIsInReads = false;
+  } else if (!deleteMode && !itemIsInReads) {
+    reads.push(createListItem(itemToMoveName));
+    tbrs = tbrs.filter((item) => item.id !== itemToMove);
+  } else if (deleteMode && itemIsInReads) {
+    reads = reads.filter((item) => item.id !== itemToMove);
+  } else if (deleteMode && !itemIsInReads) {
+    tbrs = tbrs.filter((item) => item.id !== itemToMove);
   }
   updateList();
 }
