@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 18px;
+  font-family: "Lora", serif;
 }
 
 :root {
@@ -14,11 +16,42 @@
 
 header {
   padding: 2.5vw;
+  background-color: var(--pink);
+}
+
+h1 {
+  font-family: "Rosario", sans-serif;
+  font-size: 2.5rem;
+  color: var(--almost-white);
 }
 
 main {
-  background-color: var(--yellow);
   padding: 2.5vw;
+  display: grid;
+  grid-row: 100%;
+  background-color: var(--almost-white);
+  min-height: 70vh;
+}
+
+h2 {
+  padding-left: 1vw;
+  font-family: "Rosario", sans-serif;
+  font-size: 1.75rem;
+  color: var(--blue);
+}
+
+footer {
+  display: flex;
+  padding: 1vw 2.5vw 1vw 2.5vw;
+  background-color: var(--yellow);
+  justify-content: flex-end;
+}
+
+footer p {
+  font-family: "Rosario", sans-serif;
+  color: var(--almost-white);
+  font-size: 4rem;
+  font-weight: bold;
 }
 
 .grid {
@@ -40,4 +73,27 @@ main {
 
 .form {
   align-self: end;
+}
+
+.hide {
+  display: none;
+}
+
+#delete-text {
+  grid-area: 3 / 2 / 3 / 2;
+  justify-self: end;
+  align-self: end;
+  font-family: "Rosario", sans-serif;
+  font-weight: bold;
+  color: var(--pink);
+}
+
+.form {
+  padding-top: 1vw;
+  display: flex;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
 }
