@@ -14,37 +14,37 @@
         <h1>Track your reading</h1>
     </header>
     <main>
-        <div>
+        <div class="grid">
             <section>
                 <h2>To Be Read</h2>
                 <div id="tbr-list"></div>
             </section>
-            <section>
+            <section class="read-list">
                 <h2>Böcker jag har läst</h2>
                 <div id="book-list"></div>
             </section>
+            <form data-list-form class="form">
+                <label>
+                    Enter book name:
+                    <input type="text" data-list-input />
+                </label>
+                <button>+</button>
+            </form>
+            <img src="Images/TrashCanClosed.png" alt="Drawing of closed trashcan" id="deleteButton" class="trash-can">
+            <img src="Images/TrashCanOpen.png" alt="Drawing of open trash can" class="trash-can">
         </div>
-        <form data-list-form>
-            <label>
-                Enter book name:
-                <input type="text" data-list-input />
-            </label>
-            <button>+</button>
-        </form>
-        <img src="https://picsum.photos/200" alt="Random test image" id="deleteButton">
         <article>
             <h2>How to use</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, delectus repellat doloribus provident
-                labore earum, vero enim aspernatur nesciunt soluta aliquid rem beatae nemo impedit itaque! Eius fuga
-                optio recusandae natus dolor mollitia iste, saepe ad ipsa, ullam fugit. Voluptatibus architecto
-                provident obcaecati dolores autem natus at veritatis est magni. Lorem ipsum, dolor sit amet consectetur
-                adipisicing elit. Iure dolorum quis reiciendis et suscipit cumque a, praesentium error. Corporis neque
-                tenetur impedit hic, corrupti eveniet quia beatae quos nam sed atque praesentium modi nobis nostrum odio
-                numquam sapiente, harum officia perferendis ea sit mollitia rerum. Voluptatibus quibusdam recusandae
-                quidem dolorum.</p>
+            <p>Add a book to the TBR list by using the text field. You can move it between the different lists by
+                clicking on or draging the item you want to move. You can also drag them to change their order. To
+                delete an item either drag it to the trash can or click on the trash can to activate "delete mode".
+                When delete mode is on clicking on an item will remove it. To turn off deletemode simply click on the
+                trash can again. </p>
         </article>
     </main>
-    <footer></footer>
+    <footer>
+        <p>Copyrigrt</p>
+    </footer>
 </body>
 
 </html>

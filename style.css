@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --yellow: #fff29a;
+  --pink: #de9994;
+  --gray: #92958d;
+  --blue: #3d5d66;
+  --almost-white: #eef5ed;
+}
+
+header {
+  padding: 2.5vw;
+}
+
+main {
+  background-color: var(--yellow);
+  padding: 2.5vw;
+}
+
+.grid {
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  padding-bottom: 2.5vw;
+}
+
+.trash-can {
+  width: 25%;
+  grid-area: 1 / 2 / 3 / 3;
+  justify-self: end;
+  align-self: end;
+}
+
+.read-list {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.form {
+  align-self: end;
+}
