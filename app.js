@@ -10,7 +10,9 @@ let listRoot = document.querySelector("#tbr-list");
 let bookList = document.querySelector("#book-list");
 let listForm = document.querySelector("[data-list-form]");
 let listInput = document.querySelector("[data-list-input]");
-let deleteButton = document.querySelector("#deleteButton");
+let deleteModeOn = document.querySelector("#closed-trash");
+let deleteModeOff = document.querySelector("#open-trash");
+let deleteText = document.querySelector("#delete-text");
 let deleteMode = false;
 
 listForm.addEventListener("submit", (e) => {
@@ -23,13 +25,18 @@ listForm.addEventListener("submit", (e) => {
   listInput.value = "";
 });
 
-deleteButton.addEventListener("click", () => {
-  if (!deleteMode) {
-    deleteMode = true;
-  } else {
-    deleteMode = false;
-  }
-  console.log(deleteMode);
+deleteModeOff.addEventListener("click", () => {
+  deleteMode = false;
+  deleteModeOff.classList.add("hide");
+  deleteModeOn.classList.remove("hide");
+  deleteText.classList.add("hide");
+});
+
+deleteModeOn.addEventListener("click", () => {
+  deleteMode = true;
+  deleteModeOn.classList.add("hide");
+  deleteModeOff.classList.remove("hide");
+  deleteText.classList.remove("hide");
 });
 
 function createListItem(name) {
