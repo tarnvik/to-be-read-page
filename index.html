@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TBR</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Rosario:wght@500;700&display=swap"
+        rel="stylesheet">
     <script defer src="app.js"></script>
 </head>
 
@@ -20,7 +22,7 @@
                 <div id="tbr-list"></div>
             </section>
             <section class="read-list">
-                <h2>Böcker jag har läst</h2>
+                <h2>Read</h2>
                 <div id="book-list"></div>
             </section>
             <form data-list-form class="form">
@@ -30,20 +32,19 @@
                 </label>
                 <button>+</button>
             </form>
-            <img src="Images/TrashCanClosed.png" alt="Drawing of closed trashcan" id="deleteButton" class="trash-can">
-            <img src="Images/TrashCanOpen.png" alt="Drawing of open trash can" class="trash-can">
+            <img src="Images/TrashCanClosed.png" alt="Drawing of closed trashcan" id="closed-trash" class="trash-can">
+            <img src="Images/TrashCanOpen.png" alt="Drawing of open trash can" id="open-trash" class="trash-can hide">
+            <p id="delete-text" class="hide">DELETEMODE ON</p>
         </div>
         <article>
             <h2>How to use</h2>
-            <p>Add a book to the TBR list by using the text field. You can move it between the different lists by
-                clicking on or draging the item you want to move. You can also drag them to change their order. To
-                delete an item either drag it to the trash can or click on the trash can to activate "delete mode".
-                When delete mode is on clicking on an item will remove it. To turn off deletemode simply click on the
-                trash can again. </p>
+            <p>Enter the books name to add it to the TBR list. Click on an item to move it between the lists. To
+                delete an item click on the trash can to activate "delete mode". When delete mode is on clicking on an
+                item will remove it. To turn off deletemode simply click on the trash can again. </p>
         </article>
     </main>
     <footer>
-        <p>Copyrigrt</p>
+        <p>TBR</p>
     </footer>
 </body>
 
