@@ -126,3 +126,30 @@ footer p {
   font-size: 4rem;
   font-weight: bold;
 }
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .read-list {
+    order: 1;
+  }
+
+  .trash-can {
+    order: 2;
+  }
+
+  #delete-text {
+    order: 3;
+  }
+
+  li {
+    margin-left: 1rem;
+  }
+}
