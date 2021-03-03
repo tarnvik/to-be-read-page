@@ -14,6 +14,16 @@
   --almost-white: #eef5ed;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 header {
   padding: 2.5vw;
   background-color: var(--pink);
@@ -27,10 +37,7 @@ h1 {
 
 main {
   padding: 2.5vw;
-  display: grid;
-  grid-row: 100%;
   background-color: var(--almost-white);
-  min-height: 70vh;
 }
 
 h2 {
@@ -38,20 +45,6 @@ h2 {
   font-family: "Rosario", sans-serif;
   font-size: 1.75rem;
   color: var(--blue);
-}
-
-footer {
-  display: flex;
-  padding: 1vw 2.5vw 1vw 2.5vw;
-  background-color: var(--yellow);
-  justify-content: flex-end;
-}
-
-footer p {
-  font-family: "Rosario", sans-serif;
-  color: var(--almost-white);
-  font-size: 4rem;
-  font-weight: bold;
 }
 
 .grid {
@@ -65,14 +58,11 @@ footer p {
   grid-area: 1 / 2 / 3 / 3;
   justify-self: end;
   align-self: end;
+  cursor: pointer;
 }
 
 .read-list {
   grid-area: 1 / 2 / 2 / 3;
-}
-
-.form {
-  align-self: end;
 }
 
 .hide {
@@ -88,12 +78,51 @@ footer p {
   color: var(--pink);
 }
 
+li {
+  cursor: pointer;
+  margin: 0.5rem 0 0.5rem 1vw;
+  list-style-type: "- ";
+}
+
 .form {
-  padding-top: 1vw;
   display: flex;
+  padding-top: 1rem;
 }
 
 .form label {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  border: none;
+  border-bottom: 4px solid var(--blue);
+  background-color: inherit;
+  outline: none;
+}
+.submit-button {
+  background-color: transparent;
+  border: none;
+  color: var(--blue);
+  font-size: 2.5rem;
+  outline: none;
+}
+
+li:hover, .submit-button:hover {
+  font-weight: bolder;
+}
+
+footer {
+  display: flex;
+  padding: 1vw 2.5vw 1vw 2.5vw;
+  background-color: var(--yellow);
+  justify-content: flex-end;
+}
+
+footer p {
+  font-family: "Rosario", sans-serif;
+  color: var(--almost-white);
+  font-size: 4rem;
+  font-weight: bold;
 }
